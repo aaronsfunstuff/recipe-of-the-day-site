@@ -47,7 +47,53 @@ function displayRandomRecipe() {
         li.textContent = instruction;
         instructionsList.appendChild(li);
     });
+
+    // Save button functionality
+    const saveButton = document.getElementById('save-button');
+    saveButton.addEventListener('click', function() {
+        // Save recipe to localStorage
+        saveRecipe(recipe);
+        alert(`"${recipe.title}" saved to your recipes!`);
+        displaySavedRecipes(); // Update the saved recipes list
+    });
+}
+
+// Function to save recipe to localStorage
+function saveRecipe(recipe) {
+    let savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+    savedRecipes.push(recipe);
+    localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes));
+}
+
+// Function to display saved recipes
+function displaySavedRecipes() {
+    const savedRecipesList = document.getElementById('saved-recipes-list');
+    savedRecipesList.innerHTML = '';
+
+    let savedRecipes = JSON.parse(localStorage.getItem('savedRecipes')) || [];
+
+    if (savedRecipes.length === 0) {
+        savedRecipesList.innerHTML = '<p>No saved recipes yet.</p>';
+        return;
+    }
+
+    savedRecipes.forEach(recipe => {
+        const recipeDiv = document.createElement('div');
+        recipeDiv.classList.add('recipe');
+        recipeDiv.innerHTML = `
+            <h3>${recipe.title}</h3>
+            <img src="${recipe.image}" alt="${recipe.title} Image">
+            <h4>Ingredients</h4>
+            <ul>${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}</ul>
+            <h4>Instructions</h4>
+            <ol>${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}</ol>
+        `;
+        savedRecipesList.appendChild(recipeDiv);
+    });
 }
 
 // Display a random recipe when the page loads
-window.onload = displayRandomRecipe;
+window.onload = function() {
+    displayRandomRecipe();
+    displaySavedRecipes();
+};
