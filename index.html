@@ -8,31 +8,49 @@
 </head>
 <body>
     <header>
-        <h1>Recipe of the Day</h1>
+        <div class="header-container">
+            <h1>Recipe of the Day</h1>
+        </div>
     </header>
     <main>
         <div class="recipe">
             <h2 id="recipe-title">Recipe Title</h2>
-            <img id="recipe-image" src="placeholder.jpg" alt="Recipe Image">
-            <h3>Ingredients</h3>
-            <ul id="recipe-ingredients">
-                <li>Ingredient 1</li>
-                <li>Ingredient 2</li>
-                <li>Ingredient 3</li>
-                <!-- Add more ingredients as needed -->
-            </ul>
-            <h3>Instructions</h3>
-            <ol id="recipe-instructions">
-                <li>Step 1: Instruction</li>
-                <li>Step 2: Instruction</li>
-                <li>Step 3: Instruction</li>
-                <!-- Add more steps as needed -->
-            </ol>
+            <div class="recipe-details">
+                <img id="recipe-image" src="placeholder.jpg" alt="Recipe Image">
+                <div class="recipe-info">
+                    <h3>Ingredients</h3>
+                    <ul id="recipe-ingredients">
+                        <li>Ingredient 1</li>
+                        <li>Ingredient 2</li>
+                        <li>Ingredient 3</li>
+                        <!-- Add more ingredients as needed -->
+                    </ul>
+                </div>
+            </div>
+            <div class="recipe-instructions">
+                <h3>Instructions</h3>
+                <ol id="recipe-instructions">
+                    <li>Step 1: Instruction</li>
+                    <li>Step 2: Instruction</li>
+                    <li>Step 3: Instruction</li>
+                    <!-- Add more steps as needed -->
+                </ol>
+            </div>
+            <button id="save-button">Save Recipe</button>
+        </div>
+        <div class="saved-recipes">
+            <h2>Saved Recipes</h2>
+            <div id="saved-recipes-list">
+                <!-- Saved recipes will be displayed here -->
+            </div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 Recipe of the Day. All rights reserved.</p>
+        <div class="footer-container">
+            <p>&copy; 2024 Recipe of the Day. All rights reserved.</p>
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>
 </html>
+
